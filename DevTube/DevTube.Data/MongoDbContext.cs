@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevTube.Api;
 using DevTube.Data.Properties;
 using MongoDB.Driver;
 
@@ -17,8 +18,13 @@ namespace DevTube.Data
         public MongoDbContext()
         {
             Client = new MongoClient(Settings.Default.DevTubeDatabaseConnectionString);
+
+            
+
             Database = Client.GetDatabase(Settings.Default.DevTubeDatabaseName);
-            }
-        
+
+        }
+
+        public IMongoCollection<Document> DocumentCollection => Database.GetCollection<Document>("documents");
     }
 }

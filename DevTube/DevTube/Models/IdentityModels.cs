@@ -29,5 +29,7 @@ namespace DevTube.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<DevTube.Models.DocumentViewModel> DocumentViewModels { get; set; }
     }
 }
