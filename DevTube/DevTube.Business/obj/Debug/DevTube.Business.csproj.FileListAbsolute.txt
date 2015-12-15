@@ -1,0 +1,14 @@
+C:\dev\devtube\DevTube\DevTube.Business\bin\Debug\DevTube.Business.dll
+C:\dev\devtube\DevTube\DevTube.Business\bin\Debug\DevTube.Business.pdb
+C:\dev\devtube\DevTube\DevTube.Business\bin\Debug\DevTube.Api.dll
+C:\dev\devtube\DevTube\DevTube.Business\bin\Debug\DevTube.Data.dll
+C:\dev\devtube\DevTube\DevTube.Business\bin\Debug\MongoDB.Bson.dll
+C:\dev\devtube\DevTube\DevTube.Business\bin\Debug\MongoDB.Driver.Core.dll
+C:\dev\devtube\DevTube\DevTube.Business\bin\Debug\MongoDB.Driver.dll
+C:\dev\devtube\DevTube\DevTube.Business\bin\Debug\DevTube.Api.pdb
+C:\dev\devtube\DevTube\DevTube.Business\bin\Debug\DevTube.Data.pdb
+C:\dev\devtube\DevTube\DevTube.Business\bin\Debug\MongoDB.Bson.xml
+C:\dev\devtube\DevTube\DevTube.Business\bin\Debug\MongoDB.Driver.xml
+C:\dev\devtube\DevTube\DevTube.Business\obj\Debug\DevTube.Business.csprojResolveAssemblyReference.cache
+C:\dev\devtube\DevTube\DevTube.Business\obj\Debug\DevTube.Business.dll
+C:\dev\devtube\DevTube\DevTube.Business\obj\Debug\DevTube.Business.pdb

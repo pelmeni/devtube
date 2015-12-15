@@ -1,0 +1,7 @@
+C:\dev\devtube\DevTube\DevTube.Api\bin\Debug\DevTube.Api.dll
+C:\dev\devtube\DevTube\DevTube.Api\bin\Debug\DevTube.Api.pdb
+C:\dev\devtube\DevTube\DevTube.Api\obj\Debug\DevTube.Api.csprojResolveAssemblyReference.cache
+C:\dev\devtube\DevTube\DevTube.Api\obj\Debug\DevTube.Api.dll
+C:\dev\devtube\DevTube\DevTube.Api\obj\Debug\DevTube.Api.pdb
+C:\dev\devtube\DevTube\DevTube.Api\bin\Debug\MongoDB.Bson.dll
+C:\dev\devtube\DevTube\DevTube.Api\bin\Debug\MongoDB.Bson.xml

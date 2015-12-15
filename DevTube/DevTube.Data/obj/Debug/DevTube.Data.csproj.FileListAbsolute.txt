@@ -1,0 +1,13 @@
+C:\dev\devtube\DevTube\DevTube.Data\bin\Debug\DevTube.Data.dll.config
+C:\dev\devtube\DevTube\DevTube.Data\bin\Debug\DevTube.Data.dll
+C:\dev\devtube\DevTube\DevTube.Data\bin\Debug\DevTube.Data.pdb
+C:\dev\devtube\DevTube\DevTube.Data\bin\Debug\MongoDB.Bson.dll
+C:\dev\devtube\DevTube\DevTube.Data\bin\Debug\MongoDB.Driver.Core.dll
+C:\dev\devtube\DevTube\DevTube.Data\bin\Debug\MongoDB.Driver.dll
+C:\dev\devtube\DevTube\DevTube.Data\bin\Debug\MongoDB.Bson.xml
+C:\dev\devtube\DevTube\DevTube.Data\bin\Debug\MongoDB.Driver.xml
+C:\dev\devtube\DevTube\DevTube.Data\obj\Debug\DevTube.Data.csprojResolveAssemblyReference.cache
+C:\dev\devtube\DevTube\DevTube.Data\obj\Debug\DevTube.Data.dll
+C:\dev\devtube\DevTube\DevTube.Data\obj\Debug\DevTube.Data.pdb
+C:\dev\devtube\DevTube\DevTube.Data\bin\Debug\DevTube.Api.dll
+C:\dev\devtube\DevTube\DevTube.Data\bin\Debug\DevTube.Api.pdb
