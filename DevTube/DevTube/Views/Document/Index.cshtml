@@ -9,6 +9,9 @@
 <p>
     @Html.ActionLink("Новый документ", "NewDocument")
 </p>
+<p>
+   
+</p>
 <table class="table">
     <tr>
         <th>
@@ -19,6 +22,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Header)
+
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Path)
@@ -32,32 +36,81 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Body)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContentType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Header)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Path)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Size)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Thumb)
-        </td>
-        <td>
-            @Html.ActionLink("Изменить", "Document", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Удалить", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @{
+        if (ViewBag.Id != null)
+        {
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+                    @Html.ActionLink("..", "Index", new { parentId = ViewBag.Id })
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        }
+        else
+        {
+            if (ViewBag.Level > 1)
+            {
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        @Html.ActionLink("..", "Index")
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            }
+
+        }
+    }
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @*                @Html.DisplayFor(modelItem => item.Body)*@
+                @if (new string[]{ "mp4" ,"wmv"}.Contains(item.ContentType)) {
+                    <video width="320" height="240" controls preload='metadata'>
+                        <source src="@Url.Content(@item.VPath)" type="video/mp4">
+                        <source src="@Url.Content(@item.VPath)" type="video/ogg">
+                        Your browser does not support the video tag.
+                    </video>
+                   }
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContentType)
+            </td>
+            <td>
+                @Html.ActionLink(item.Header, "Index", new { parentId = item.Id })
+                @*            @Html.DisplayFor(modelItem => item.Header)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Path)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Thumb)
+            </td>
+            <td>
+                @Html.ActionLink("Изменить", "Document", new { id = item.Id }) |
+                @*            @Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>
+
+
+

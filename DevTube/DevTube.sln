@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevTube.Api", "DevTube.Api\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevTube.Business", "DevTube.Business\DevTube.Business.csproj", "{4F84FD2A-0760-4E6C-A260-C0BFB67A6D73}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevTube.Indexer", "DevTube.Indexer\DevTube.Indexer.csproj", "{8802EA0D-C41D-4A22-978F-30F6ACEA4476}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4F84FD2A-0760-4E6C-A260-C0BFB67A6D73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F84FD2A-0760-4E6C-A260-C0BFB67A6D73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F84FD2A-0760-4E6C-A260-C0BFB67A6D73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8802EA0D-C41D-4A22-978F-30F6ACEA4476}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8802EA0D-C41D-4A22-978F-30F6ACEA4476}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8802EA0D-C41D-4A22-978F-30F6ACEA4476}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8802EA0D-C41D-4A22-978F-30F6ACEA4476}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

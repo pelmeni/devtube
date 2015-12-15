@@ -48,7 +48,7 @@ namespace DevTube.Api
             set;
         }
         [Description("Размер в байтах")]
-        public int Size
+        public long Size
         {
             get;
 
@@ -61,5 +61,17 @@ namespace DevTube.Api
 
             set;
         }
+        [Description("Уровень")]
+        public int Level { get; set; }
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        [Description("Идентификатор родителя")]
+        public string ParentId
+        {
+            get;
+
+            set;
+        }
+        public string HashPath { get; set; }
     }
 }

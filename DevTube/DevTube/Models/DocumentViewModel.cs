@@ -19,7 +19,8 @@ namespace DevTube.Models
                 Thumb = doc.Thumb,
                 Body = doc.Body,
                 ContentType = doc.ContentType,
-                Header = doc.Header
+                Header = doc.Header,
+                Level = doc.Level,
             };
         }
         public Document ToDocument()
@@ -33,8 +34,11 @@ namespace DevTube.Models
                 Thumb = doc.Thumb,
                 Body = doc.Body,
                 ContentType = doc.ContentType,
-                Header = doc.Header
+                Header = doc.Header,
+                Level = doc.Level
             };
         }
+
+        public string VPath => ("~/Files/" + Path);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using DevTube.Api;
@@ -10,7 +11,7 @@ using MongoDB.Driver;
 
 namespace DevTube.Business
 {
-    public static class DocumentCollectionOperations
+    public static class DocumentsHelper
     {
         public static Document InsertDocument(Document d)
         {
@@ -18,11 +19,7 @@ namespace DevTube.Business
             var ctx = new MongoDbContext();
 
             ctx.DocumentCollection.InsertOne(d);
-            
 
-
-
-            //ctx.DocumentCollection.FindSync()
             return d;
         }
 
@@ -30,10 +27,11 @@ namespace DevTube.Business
         {
             var ctx = new MongoDbContext();
             var filter=new BsonDocument();
-            return ctx.DocumentCollection.Find(filter).ToList();
+            //return ctx.DocumentCollection.Find(filter).ToList();
+
+            return ctx.DocumentCollection.AsQueryable().ToList();
 
         }
-
         public static IEnumerable<Document> FindAll(this IMongoCollection<Document> col)
         {
             var filter = new BsonDocument();
@@ -77,6 +75,44 @@ namespace DevTube.Business
 
             ctx.DocumentCollection.FindOneAndDelete(i => i.Id == id);
 
+        }
+
+        public static void InsertDocument(IEnumerable<Document> ii)
+        {
+
+            var ctx = new MongoDbContext();
+
+            foreach (var i in ii)
+            {
+                var f =
+                    ctx.DocumentCollection.AsQueryable()
+                        .FirstOrDefault(d => d.Path == i.Path && d.Level == i.Level && d.ContentType == i.ContentType);
+
+                if(f!=null)
+                    continue;
+
+                InsertDocument(i);
+
+            }
+            
+
+            
+        }
+
+        public static void LinkParents(List<FSItemInfo> list)
+        {
+            var ctx = new MongoDbContext();
+
+            var d =ctx.DocumentCollection.AsQueryable().ToDictionary(j => j.HashPath, j => j.Id);
+
+            var dsrc = list.ToDictionary(j => d[j.HashPath], j => j.Parent!=null?d[j.Parent.HashPath]:null);
+
+            foreach (var i in dsrc)
+            {
+                var update = Builders<Document>.Update.Set(a => a.ParentId, i.Value);
+
+                ctx.DocumentCollection.UpdateOne(n=>n.Id==i.Key,update);
+            }
         }
     }
 }

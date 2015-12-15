@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,13 +12,32 @@ namespace DevTube.Controllers
 {
     public class DocumentController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string parentId=null)
         {
-            var model = DocumentCollectionOperations.GetAllDocuments().Select(DocumentViewModel.From);
+            var q = DocumentsHelper.GetAllDocuments().AsQueryable();//.Where(z=>z.Size== 3151738);
+            
+
+            if (parentId == null)
+            {
+                ViewBag.Id = null;
+                ViewBag.Level = 1;
+                q = q.Where(i => i.Level == 1);
+            }
+            else
+            {
+                var doc = DocumentsHelper.Get(parentId);
+                
+                ViewBag.Id = doc.ParentId;
+                ViewBag.Level = doc.Level+1;
+
+                q = q.Where(i => i.ParentId == parentId);
+            }
+            var model=q.ToArray().Select(DocumentViewModel.From);
 
             return View(model);
 
         }
+
         // GET: Document
         public ActionResult NewDocument()
         {
@@ -29,7 +49,7 @@ namespace DevTube.Controllers
         public ActionResult Document(string id)
         {
 
-            var model = DocumentViewModel.From(DocumentCollectionOperations.Get(id));
+            var model = DocumentViewModel.From(DocumentsHelper.Get(id));
 
             return View("Document", model);
 
@@ -38,7 +58,7 @@ namespace DevTube.Controllers
         public ActionResult NewDocument(DocumentViewModel doc)
         {
             
-            DocumentCollectionOperations.InsertOrUpdateDocument(doc.ToDocument());
+            DocumentsHelper.InsertOrUpdateDocument(doc.ToDocument());
 
             return RedirectToAction("Index");
         }
@@ -50,7 +70,7 @@ namespace DevTube.Controllers
 
         public ActionResult Delete(string id)
         {
-            DocumentCollectionOperations.Delete(id);
+            DocumentsHelper.Delete(id);
 
             return RedirectToAction("Index");
         }
