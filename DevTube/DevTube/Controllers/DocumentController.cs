@@ -74,5 +74,11 @@ namespace DevTube.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public string PostOnPlay(string src)
+        {
+
+            return 
+        }
     }
 }

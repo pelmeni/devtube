@@ -4,6 +4,13 @@
     ViewBag.Title = "Index";
 }
 
+<script>
+    function onplay(v, src) {
+        console.log(src);
+    }
+    
+</script>
+
 <h2>Index</h2>
 
 <p>
@@ -70,7 +77,24 @@
 
         }
     }
+    <script>
+        $(document).ready(function() {
 
+
+            @foreach (var itemq in Model)
+                {
+                    
+                
+                ViewContext.Writer.WriteLine("console.log($('#{0}'));" , itemq.Id);
+
+                    ViewContext.Writer.WriteLine("$('#{0}').on('play',function(e){{onplay('{0}', '{1}'); }});", itemq.Id, itemq.VPath);
+                }
+
+
+
+            });
+
+            </script>
 
     @foreach (var item in Model)
     {
@@ -78,7 +102,9 @@
             <td>
                 @*                @Html.DisplayFor(modelItem => item.Body)*@
                 @if (new string[]{ "mp4" ,"wmv"}.Contains(item.ContentType)) {
-                    <video width="320" height="240" controls preload='metadata'>
+                    <video id="@item.Id" width="320" height="240" controls preload='metadata'
+                           play="play()"
+                           >
                         <source src="@Url.Content(@item.VPath)" type="video/mp4">
                         <source src="@Url.Content(@item.VPath)" type="video/ogg">
                         Your browser does not support the video tag.
